@@ -43,6 +43,9 @@ public class ChessMatch {
         if (!board.thereIsAPiece(pos)){
             throw new ChessException("Source position does not exist");
         }
+        if(!board.piece(pos).isThereAnyPossibleMove()){
+            throw new ChessException("There is no valid position to this piece!");
+        }
     }
 
     private void placeNewPiece(char column, int row, ChessPiece piece) {
