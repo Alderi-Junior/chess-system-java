@@ -4,13 +4,31 @@ package application;
 import boardgame.Board;
 import boardgame.Position;
 import chess.ChessMatch;
+import chess.ChessPiece;
+import chess.ChessPosition;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-
+        Scanner sc = new Scanner(System.in);
         ChessMatch match = new ChessMatch();
-        UI.printBoard(match.getPieces());
+
+        while(true){
+            UI.printBoard(match.getPieces());
+            System.out.println();
+            System.out.println("Source: ");
+            ChessPosition source = UI.readChessPosition(sc);
+            System.out.println();
+            System.out.println("Destination: ");
+            ChessPosition target = UI.readChessPosition(sc);
+
+            ChessPiece capturedPiece = match.performChessMove(source, target);
+
+
+        }
+
 
     }
 }
